@@ -8,6 +8,11 @@ env:
         # a separate install.
         - TEST_DEPENDS="numpy"
         - PLAT=x86_64
+        - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
+        # Following generated with
+        # travis encrypt -r cancan101/pyNFFT-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
+        - secure:
+            "JMolSxLWVxAefIOIkMpL3fhwzeup6tFbQ5r+8NhlqAxn/m6rbC2cKzxsyKFGeWzh94YkpIovI2hq1QbmJZJvNxhANusmrXeQBKmNim9MgdwwWEYyTHGpEicGY9G74C6Tg5gPeux87II0TmJPhAm3Zfi0wOsG3SJ6lwdXa3SRxzvCv37eMY48qxlVR6TqHA/Vl4v4BGPA0rnxXbaZ6L5Qfmw4pboLRJY+nFpH83Pcnx8ktqSBFlIZWCnT9c8UA+EVOph/9oBYPj/YSpGOHU2rLmbV7tPZ+zSJgBxrtsXH1pUfmsswsQPsB3qwHM3JdV3lZtWDUnp+O07kvfAufiI65gsindJZn1oFHhZvEcS3WDRr7ARSBPdcPbYR/c3p6ymGQmfNpEWha6E50Ge/EI0CxyYPRZijXbTam3GSCyyc1bFyv9GXUU7A6pssYQPBE+qk2+iUJuW/KrB4GVhkInxta3OXI6oJZnJp0XSzNfuWghelKuZxTc2ctK3Uz3Xftxwf+LBbpNB6GdgshohHvak6X9ibTQXrrn+DxIxP9ao0QlZKOvNhC9HpnLFaDAXABN0PZwgD0ckfU56hsnkMg3SPhSF/sapldaTXiivnEUvya0FFahOC52iNca3ouONnErvMDYn/3/skTJBxCwAPzD6X3Q9nJnUSPTNxm+8b1CGWpgo="
 
 language: python
 # The travis Python version is unrelated to the version we build and test
