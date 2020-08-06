@@ -81,11 +81,6 @@ install:
 script:
     - install_run $PLAT
 
-branches:
-  only:
-  - master
-  - /^v\d+\.\d+(\.\d+)?(-\S*)?(rc\d+)?$/
-
 after_success:
     # push file to file.io
     - cd ${TRAVIS_BUILD_DIR}/wheelhouse/
