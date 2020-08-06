@@ -1,3 +1,4 @@
 [submodule "multibuild"]
+    branch = devel
 	path = multibuild
 	url = https://github.com/matthew-brett/multibuild.git
