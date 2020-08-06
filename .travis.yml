@@ -12,23 +12,25 @@ env:
         - PLAT=x86_64
         - UNICODE_WIDTH=32
         - MANYLINUX_URL="https://5cf40426d9f06eb7461d-6fe47d9331aba7cd62fc36c7196769e4.ssl.cf2.rackcdn.com"
+        - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
         # Following generated with
-        - DAILY_COMMIT=master
+        # travis encrypt -r cancan101/pyNFFT-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
+        - secure:
+            "JMolSxLWVxAefIOIkMpL3fhwzeup6tFbQ5r+8NhlqAxn/m6rbC2cKzxsyKFGeWzh94YkpIovI2hq1QbmJZJvNxhANusmrXeQBKmNim9MgdwwWEYyTHGpEicGY9G74C6Tg5gPeux87II0TmJPhAm3Zfi0wOsG3SJ6lwdXa3SRxzvCv37eMY48qxlVR6TqHA/Vl4v4BGPA0rnxXbaZ6L5Qfmw4pboLRJY+nFpH83Pcnx8ktqSBFlIZWCnT9c8UA+EVOph/9oBYPj/YSpGOHU2rLmbV7tPZ+zSJgBxrtsXH1pUfmsswsQPsB3qwHM3JdV3lZtWDUnp+O07kvfAufiI65gsindJZn1oFHhZvEcS3WDRr7ARSBPdcPbYR/c3p6ymGQmfNpEWha6E50Ge/EI0CxyYPRZijXbTam3GSCyyc1bFyv9GXUU7A6pssYQPBE+qk2+iUJuW/KrB4GVhkInxta3OXI6oJZnJp0XSzNfuWghelKuZxTc2ctK3Uz3Xftxwf+LBbpNB6GdgshohHvak6X9ibTQXrrn+DxIxP9ao0QlZKOvNhC9HpnLFaDAXABN0PZwgD0ckfU56hsnkMg3SPhSF/sapldaTXiivnEUvya0FFahOC52iNca3ouONnErvMDYn/3/skTJBxCwAPzD6X3Q9nJnUSPTNxm+8b1CGWpgo="
 
-language: python
-# The travis Python version is unrelated to the version we build and test
-# with.  This is set with the MB_PYTHON_VERSION variable.
-python: 3.5
+language: generic
 sudo: required
-dist: trusty
+dist: bionic
 services: docker
-osx_image: xcode6.4
 
 matrix:
-  exclude:
-    # Exclude the default Python 3.5 build
-    - python: 3.5
   include:
+    - os: linux
+      env: MB_PYTHON_VERSION=2.7
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=2.7
+        - UNICODE_WIDTH=16
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.5
@@ -42,24 +44,8 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.7
-        - NP_BUILD_DEP=numpy==1.17.2
-        - NP_TEST_DEP=numpy==1.17.2
-#    - os: osx
-#      language: generic
-#      env:
-#        - MB_PYTHON_VERSION=2.7
-#    - os: osx
-#      language: generic
-#      env:
-#        - MB_PYTHON_VERSION=3.5
-#        - NP_BUILD_DEP=numpy==1.9.3
-#        - NP_TEST_DEP=numpy==1.9.3
-#    - os: osx
-#      language: generic
-#      env:
-#        - MB_PYTHON_VERSION=3.6
-#        - NP_BUILD_DEP=numpy==1.11.3
-#        - NP_TEST_DEP=numpy==1.11.3
+        - NP_BUILD_DEP=numpy==1.11.3
+        - NP_TEST_DEP=numpy==1.11.3
 
 before_install:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then

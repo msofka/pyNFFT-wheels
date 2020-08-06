@@ -60,5 +60,5 @@ function pre_build {
 
 function run_tests {
     echo "Starting tests..."
-    python ../run_test.py
+    python3 ../run_test.py
 }
